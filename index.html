@@ -1,0 +1,112 @@
+<!-- ===================== index.html ===================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Advanced Expense Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+
+    <!-- LOGIN PAGE -->
+    <div class="login-page" id="loginPage">
+
+        <div class="login-left">
+            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995503.png" class="login-illustration">
+
+            <h1 class="illustration-title">Smart Money Management</h1>
+
+            <p class="illustration-text">Track expenses • Save more • Stay organized</p>
+        </div>
+
+        <div class="login-right">
+            <div class="login-card">
+                <h1 class="login-title">Welcome Back</h1>
+
+                <p class="login-subtitle">Login or Create a New Account</p>
+
+                <div class="login-input">
+                    <input type="text" id="username" placeholder="Enter Username">
+                </div>
+
+                <div class="login-input">
+                    <input type="password" id="password" placeholder="Enter Password">
+                </div>
+
+                <button class="login-btn" onclick="loginUser()">Login</button>
+
+                <button class="register-btn" onclick="registerUser()">Register</button>
+
+                <p id="loginMsg" class="login-msg"></p>
+            </div>
+        </div>
+
+    </div>
+    <!-- END LOGIN PAGE -->
+
+
+    <!-- MAIN APP PAGE -->
+    <div class="container" id="appPage" style="display:none;">
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+
+        <button class="dark-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+
+
+        <h1>Expense Tracker</h1>
+
+        <div class="input-section">
+
+            <input type="text" id="title" placeholder="Expense Title">
+
+            <input type="number" id="amount" placeholder="Amount (₹)">
+
+            <input type="date" id="date">
+
+            <select id="category">
+                <option value="Food">Food</option>
+                <option value="Travel">Travel</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Bills">Bills</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button onclick="addExpense()">Add</button>
+        </div>
+
+        <h2>Expense List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="expenseTable"></tbody>
+        </table>
+
+        <h2>Total: ₹<span id="total">0</span></h2>
+
+        <h2>Monthly Expense Chart</h2>
+        <canvas id="expenseChart"></canvas>
+
+        <h2>Category Wise Expense Chart</h2>
+        <canvas id="categoryChart"></canvas>
+
+        <button class="pdf-btn" onclick="downloadPDF()">Download PDF Report</button>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
